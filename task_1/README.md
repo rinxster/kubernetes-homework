@@ -133,3 +133,4 @@ NAME                      READY   STATUS    RESTARTS   AGE
 nginx2-759698c87c-jjnk7   1/1     Running   0          8s
 nginx2-759698c87c-wmks6   1/1     Running   0          75s
 ```
+*Conclusion: as you can see new pod is created automatically as soon as one is deleted.
