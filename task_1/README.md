@@ -87,9 +87,43 @@ web    1/1     Running   0          10s
 
 ```
 - take a look at created resource in cmd
-```bash
-minikube ssh
-docker container ls
+$minikube ssh
+$docker container ls
+```
+```
+rinx@kuber-lab01:~$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ docker container ls
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS          PORTS     NAMES
+8d73ac068604   nginx                    "/docker-entrypoint.…"   3 minutes ago    Up 3 minutes              k8s_web_web_default_917602a7-0246-406e-b161-3baa7ff3df5a_0
+e802133e8cb5   k8s.gcr.io/pause:3.5     "/pause"                 3 minutes ago    Up 3 minutes              k8s_POD_web_default_917602a7-0246-406e-b161-3baa7ff3df5a_0
+42bd462bd101   kubernetesui/dashboard   "/dashboard --insecu…"   10 minutes ago   Up 10 minutes             k8s_kubernetes-dashboard_kubernetes-dashboard-67484c44f6-w4qlh_kubernetes-dashboard_712c2961-34b3-44d2-b32c-98ec58d07e2f_0
+cab509fb196b   48d79e554db6             "/metrics-sidecar"       10 minutes ago   Up 10 minutes             k8s_dashboard-metrics-scraper_dashboard-metrics-scraper-856586f554-vz22g_kubernetes-dashboard_8a785b20-5301-470e-92e9-ca622ecaa2e9_0
+f1994a02a4cb   k8s.gcr.io/pause:3.5     "/pause"                 10 minutes ago   Up 10 minutes             k8s_POD_dashboard-metrics-scraper-856586f554-vz22g_kubernetes-dashboard_8a785b20-5301-470e-92e9-ca622ecaa2e9_0
+5f9c4eb3c6d2   k8s.gcr.io/pause:3.5     "/pause"                 10 minutes ago   Up 10 minutes             k8s_POD_kubernetes-dashboard-67484c44f6-w4qlh_kubernetes-dashboard_712c2961-34b3-44d2-b32c-98ec58d07e2f_0
+d44ccd3f06dd   6e38f40d628d             "/storage-provisioner"   14 minutes ago   Up 14 minutes             k8s_storage-provisioner_storage-provisioner_kube-system_661580b2-7328-44f8-95e6-14eb1799ca77_8
+3e811e802d6a   f73640fb5061             "/metrics-server --c…"   14 minutes ago   Up 14 minutes             k8s_metrics-server_metrics-server-dbf765b9b-5sbdm_kube-system_b6fd7ca2-5ec0-44f7-9da5-b453b011d59d_5
+c95aa2cf1240   8d147537fb7d             "/coredns -conf /etc…"   15 minutes ago   Up 15 minutes             k8s_coredns_coredns-78fcd69978-bbhld_kube-system_839c8d72-51fa-4fbc-b5f3-425c14d8fc3a_2
+575f7f8e4cf2   6120bd723dce             "/usr/local/bin/kube…"   15 minutes ago   Up 15 minutes             k8s_kube-proxy_kube-proxy-gklq9_kube-system_61517f3f-3c04-4ad4-87e8-e911c5cb3d70_2
+ee636aed469e   k8s.gcr.io/pause:3.5     "/pause"                 15 minutes ago   Up 15 minutes             k8s_POD_metrics-server-dbf765b9b-5sbdm_kube-system_b6fd7ca2-5ec0-44f7-9da5-b453b011d59d_2
+a16fa77da2fd   k8s.gcr.io/pause:3.5     "/pause"                 15 minutes ago   Up 15 minutes             k8s_POD_kube-proxy-gklq9_kube-system_61517f3f-3c04-4ad4-87e8-e911c5cb3d70_2
+1914f6119e8a   k8s.gcr.io/pause:3.5     "/pause"                 15 minutes ago   Up 15 minutes             k8s_POD_storage-provisioner_kube-system_661580b2-7328-44f8-95e6-14eb1799ca77_2
+03d5f48946a8   k8s.gcr.io/pause:3.5     "/pause"                 15 minutes ago   Up 15 minutes             k8s_POD_coredns-78fcd69978-bbhld_kube-system_839c8d72-51fa-4fbc-b5f3-425c14d8fc3a_2
+908c03eb9c94   0aa9c7e31d30             "kube-scheduler --au…"   16 minutes ago   Up 15 minutes             k8s_kube-scheduler_kube-scheduler-minikube_kube-system_eee9e2da42102bf0a05e1e7b00e318bf_2
+1f9a45884ee2   004811815584             "etcd --advertise-cl…"   16 minutes ago   Up 15 minutes             k8s_etcd_etcd-minikube_kube-system_00dc33d4408782eee144d5292123d3a3_2
+ccbb29396308   05c905cef780             "kube-controller-man…"   16 minutes ago   Up 15 minutes             k8s_kube-controller-manager_kube-controller-manager-minikube_kube-system_cf61f8185359bbfecb994d4d92683b56_2
+e56cded0199d   53224b502ea4             "kube-apiserver --ad…"   16 minutes ago   Up 16 minutes             k8s_kube-apiserver_kube-apiserver-minikube_kube-system_3c194c47ee00479b5eb37aa600a476a4_2
+7b69c947c8a6   k8s.gcr.io/pause:3.5     "/pause"                 16 minutes ago   Up 16 minutes             k8s_POD_kube-scheduler-minikube_kube-system_eee9e2da42102bf0a05e1e7b00e318bf_2
+82ddbc1d1d8e   k8s.gcr.io/pause:3.5     "/pause"                 16 minutes ago   Up 16 minutes             k8s_POD_kube-controller-manager-minikube_kube-system_cf61f8185359bbfecb994d4d92683b56_2
+c67ca87a88b9   k8s.gcr.io/pause:3.5     "/pause"                 16 minutes ago   Up 16 minutes             k8s_POD_kube-apiserver-minikube_kube-system_3c194c47ee00479b5eb37aa600a476a4_2
+e8906c290a40   k8s.gcr.io/pause:3.5     "/pause"                 16 minutes ago   Up 16 minutes             k8s_POD_etcd-minikube_kube-system_00dc33d4408782eee144d5292123d3a3_2
+$
 ```
 
 
