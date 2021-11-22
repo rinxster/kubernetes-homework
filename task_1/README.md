@@ -83,32 +83,28 @@ web    1/1     Running   0          10s
 ```
 - take a look at created resource in Dashboard
 ![Screenshot](https://user-images.githubusercontent.com/3485151/142851640-ede73b58-a0e1-4b6a-8893-137475089425.jpg)
-```
 
-```
 - take a look at created resource in cmd
 $minikube ssh
 $docker container ls
 
 ![Screenshot](https://user-images.githubusercontent.com/3485151/142852031-ee585441-4af3-4ac9-8b28-b50159e70d70.jpg)
 
-
-## [Specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/)
-```bash
-kubectl explain pods.spec
-```
 Apply manifests (download from repository)
-```bash
-kubectl apply -f pod.yaml
-kubectl apply -f rs.yaml
+
+rinx@kuber-lab01:~/education/task_1$ kubectl apply -f pod.yaml
+```pod/nginx created
 ```
-Look at pod
-```bash
-kubectl get pod
+
+rinx@kuber-lab01:~/education/task_1$ kubectl apply -f rs.yaml
+```replicaset.apps/webreplica created```
+
+rinx@kuber-lab01:~/education/task_1$ kubectl get pod
 ```
-# You can create simple manifest from cmd
-```bash
-kubectl run web --image=nginx:latest --dry-run=client -o yaml
+NAME               READY   STATUS              RESTARTS   AGE
+nginx              0/1     ContainerCreating   0          5s
+webreplica-k794n   0/1     ContainerCreating   0          2s
+webreplica-nhjdk   0/1     ContainerCreating   0          2s
 ```
 ### Homework
 * Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
