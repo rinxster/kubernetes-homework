@@ -93,11 +93,14 @@ $docker container ls
 Apply manifests (download from repository)
 
 rinx@kuber-lab01:~/education/task_1$ kubectl apply -f pod.yaml
-```pod/nginx created
+```
+pod/nginx created
 ```
 
 rinx@kuber-lab01:~/education/task_1$ kubectl apply -f rs.yaml
-```replicaset.apps/webreplica created```
+```
+replicaset.apps/webreplica created
+```
 
 rinx@kuber-lab01:~/education/task_1$ kubectl get pod
 ```
