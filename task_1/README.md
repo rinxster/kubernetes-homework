@@ -59,8 +59,17 @@ rinx@kuber-lab01:~$ kubectl get nodes
 NAME       STATUS   ROLES                  AGE    VERSION
 minikube   Ready    control-plane,master   173m   v1.22.3
 ```
+
+Connected to Dashboard
+kubectl proxy
+In browser connect to http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+
+![screenshot](https://user-images.githubusercontent.com/3485151/142850923-b90da0c9-8818-4e93-83de-d747816ac1ea.jpg)
+
+
 # Task 1.2
 # Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
+
 
 
 
