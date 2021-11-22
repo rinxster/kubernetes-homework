@@ -1,2 +1,1 @@
-# kubernetes-homework
- 
+# See README in task folder
