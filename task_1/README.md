@@ -111,6 +111,7 @@ webreplica-nhjdk   0/1     ContainerCreating   0          2s
 ```
 ### Homework
 * Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
+
  rinx@kuber-lab01:~/education/task_1$ kubectl create deployment nginx2 --image=nginx:latest --replicas 2
 ```deployment.apps/nginx2 created
 ```
