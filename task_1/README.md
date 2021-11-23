@@ -109,28 +109,28 @@ nginx              0/1     ContainerCreating   0          5s
 webreplica-k794n   0/1     ContainerCreating   0          2s
 webreplica-nhjdk   0/1     ContainerCreating   0          2s
 ```
-### Homework
-* Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
+## Homework
+###* Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
 
- rinx@kuber-lab01:~/education/task_1$ kubectl create deployment nginx2 --image=nginx:latest --replicas 2
+ **rinx@kuber-lab01:~/education/task_1$ kubectl create deployment nginx2 --image=nginx:latest --replicas 2**
  
 ```
 deployment.apps/nginx2 created
 ```
-rinx@kuber-lab01:~/education/task_1$ kubectl get pods
+**rinx@kuber-lab01:~/education/task_1$ kubectl get pods**
 ```
 NAME                      READY   STATUS    RESTARTS   AGE
 nginx2-759698c87c-vj7mn   1/1     Running   0          51s
 nginx2-759698c87c-wmks6   1/1     Running   0          51s
 ```
-rinx@kuber-lab01:~/education/task_1$ kubectl delete pod nginx2-759698c87c-vj7mn
+**rinx@kuber-lab01:~/education/task_1$ kubectl delete pod nginx2-759698c87c-vj7mn**
 ```
 pod "nginx2-759698c87c-vj7mn" deleted
 ```
-rinx@kuber-lab01:~/education/task_1$ kubectl get pods
+**rinx@kuber-lab01:~/education/task_1$ kubectl get pods**
 ```
 NAME                      READY   STATUS    RESTARTS   AGE
 nginx2-759698c87c-jjnk7   1/1     Running   0          8s
 nginx2-759698c87c-wmks6   1/1     Running   0          75s
 ```
-# Conclusion: as you can see new pod is created automatically as soon as one is deleted.
+## Conclusion: as you can see new pod is created automatically as soon as one is deleted.
