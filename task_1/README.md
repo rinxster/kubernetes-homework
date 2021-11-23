@@ -67,8 +67,7 @@ In browser connect to http://localhost:8001/api/v1/namespaces/kubernetes-dashboa
 ![screenshot](https://user-images.githubusercontent.com/3485151/142850923-b90da0c9-8818-4e93-83de-d747816ac1ea.jpg)
 
 
-# Task 1.2
-# Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
+
 # Task 1.2
 
 # Kubernetes resources introduction
@@ -92,17 +91,17 @@ $docker container ls
 
 Apply manifests (download from repository)
 
-rinx@kuber-lab01:~/education/task_1$ kubectl apply -f pod.yaml
+**rinx@kuber-lab01:~/education/task_1$ kubectl apply -f pod.yaml**
 ```
 pod/nginx created
 ```
 
-rinx@kuber-lab01:~/education/task_1$ kubectl apply -f rs.yaml
+**rinx@kuber-lab01:~/education/task_1$ kubectl apply -f rs.yaml**
 ```
 replicaset.apps/webreplica created
 ```
 
-rinx@kuber-lab01:~/education/task_1$ kubectl get pod
+**rinx@kuber-lab01:~/education/task_1$ kubectl get pod**
 ```
 NAME               READY   STATUS              RESTARTS   AGE
 nginx              0/1     ContainerCreating   0          5s
@@ -110,7 +109,7 @@ webreplica-k794n   0/1     ContainerCreating   0          2s
 webreplica-nhjdk   0/1     ContainerCreating   0          2s
 ```
 ## Homework
-###* Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
+### Create a deployment nginx. Set up two replicas. Remove one of the pods, see what happens.
 
  **rinx@kuber-lab01:~/education/task_1$ kubectl create deployment nginx2 --image=nginx:latest --replicas 2**
  
