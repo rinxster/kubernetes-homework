@@ -177,3 +177,4 @@ spec:
              port: 
                 number: 80
 ```
+![Screenshot](https://user-images.githubusercontent.com/3485151/143106169-077e5dfe-2628-42cd-9aa9-4d8da9390d3e.JPG)
