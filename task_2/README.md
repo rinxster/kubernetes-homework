@@ -127,7 +127,8 @@ curl $(minikube ip)
 ### Homework
 
 * In Minikube in namespace kube-system, there are many different pods running. Your task is to figure out who creates them, and who makes sure they are running (restores them after deletion).
-rinx@kuber-lab01:~/education/task_2$ kubectl describe pods -n kube-system | grep "^Name:"
+
+**rinx@kuber-lab01:~/education/task_2$ kubectl describe pods -n kube-system | grep "^Name:"**
 ```
 Name:                 coredns-78fcd69978-bbhld
 Name:                 etcd-minikube
@@ -138,7 +139,7 @@ Name:                 kube-scheduler-minikube
 Name:                 metrics-server-dbf765b9b-5sbdm
 Name:         storage-provisioner
 ```
-rinx@kuber-lab01:~/education/task_2$ kubectl describe pods -n kube-system | grep "Controlled By"
+**rinx@kuber-lab01:~/education/task_2$ kubectl describe pods -n kube-system | grep "Controlled By"**
 ```
 Controlled By:  ReplicaSet/coredns-78fcd69978
 Controlled By:  Node/minikube
