@@ -249,10 +249,75 @@ Connect to any pod
 ```bash
 cat /etc/resolv.conf
 ```
+
 Compare the IP address of the DNS server in the pod and the DNS service of the Kubernetes cluster.
-* Compare headless and clusterip
-Inside the pod run nslookup to normal clusterip and headless. Compare the results.
-You will need to create pod with dnsutils.
+
+```bash
+
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash
+
+root@web-5584c6c5c6-flgfw:/# more /etc/resolv.conf
+nameserver 10.96.0.10
+search default.svc.cluster.local svc.cluster.local cluster.local
+options ndots:5
+
+
+rinx@kuber-lab01:~/education/task_2$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ cat /etc/resolv.conf
+
+nameserver 10.0.2.3
+search .
+$ exit
+```
+Compare headless and clusterip 
+
+Inside the pod run nslookup to normal clusterip and headless. 
+Compare the results. You will need to create pod with dnsutils.
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+pod/dnsutils created
+
+rinx@kuber-lab01:~/education/task_2$ kubectl get pods dnsutils
+NAME       READY   STATUS    RESTARTS   AGE
+dnsutils   1/1     Running   0          46s
+
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -i -t dnsutils -- nslookup web
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:   web.default.svc.cluster.local
+Address: 10.105.7.232
+
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -i -t dnsutils -- nslookup web-np
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:   web-np.default.svc.cluster.local
+Address: 10.102.230.48
+
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -i -t dnsutils -- nslookup web-headless
+Server:         10.96.0.10
+Address:        10.96.0.10#53
+
+Name:   web-headless.default.svc.cluster.local
+Address: 172.17.0.4
+Name:   web-headless.default.svc.cluster.local
+Address: 172.17.0.6
+Name:   web-headless.default.svc.cluster.local
+Address: 172.17.0.5
+```
+
+### Conclusion: Normal (not headless) Services resolves to the cluster IP of the Service. As you can see nslookup for headless gives back 3 records and ip addresses for each pod (without a cluster IP) Services resolves to the set of IPs of the pods selected by the Service.
+
+
+
 ### [Ingress](https://kubernetes.github.io/ingress-nginx/deploy/#minikube)
 Enable Ingress controller
 ```bash
