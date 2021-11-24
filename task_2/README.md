@@ -217,12 +217,6 @@ NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
 kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        2d1h
 web          ClusterIP   10.105.7.232    <none>        80/TCP         123m
 web-np       NodePort    10.102.230.48   <none>        80:31661/TCP   3s
-
-
-NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP        20h
-web          ClusterIP   10.100.170.236   <none>        80/TCP         15m
-web-np       NodePort    10.101.147.109   <none>        80:30682/TCP   8s
 ```
 Note how port is specified for a NodePort service
 ### Checking the availability of the NodePort service type
