@@ -74,14 +74,13 @@ web-5584c6c5c6-w2l5l   1/1     Running   0          76s   172.17.0.6   minikube 
 ```
 * Try connect to pod with curl (curl pod_ip_address). What happens?
 ```bash
-$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.4
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.4
 curl: (7) Failed to connect to 172.17.0.4 port 80: No route to host
-$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.5
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.5
 curl: (7) Failed to connect to 172.17.0.5 port 80: No route to host
-$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.6
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.6
 curl: (7) Failed to connect to 172.17.0.6 port 80: No route to host
 ```
-* From you PC
 * From minikube (minikube ssh)
 ```bash
 rinx@kuber-lab01:~$ minikube ssh
@@ -102,7 +101,12 @@ web-5584c6c5c6-w2l5l
 ```
 * From another pod (kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash)
 ```bash
-
+rinx@kuber-lab01:~$ kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash
+root@web-5584c6c5c6-flgfw:/# curl 172.17.0.5
+web-5584c6c5c6-h68pp
+root@web-5584c6c5c6-flgfw:/# curl 172.17.0.6
+web-5584c6c5c6-w2l5l
+root@web-5584c6c5c6-flgfw:/#
 ```
 
 ### Create service (ClusterIP)
