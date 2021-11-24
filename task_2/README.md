@@ -73,9 +73,38 @@ web-5584c6c5c6-h68pp   1/1     Running   0          76s   172.17.0.5   minikube 
 web-5584c6c5c6-w2l5l   1/1     Running   0          76s   172.17.0.6   minikube   <none>           <none>
 ```
 * Try connect to pod with curl (curl pod_ip_address). What happens?
+```bash
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.4
+curl: (7) Failed to connect to 172.17.0.4 port 80: No route to host
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.5
+curl: (7) Failed to connect to 172.17.0.5 port 80: No route to host
+rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.6
+curl: (7) Failed to connect to 172.17.0.6 port 80: No route to host
+```
 * From you PC
 * From minikube (minikube ssh)
+```bash
+rinx@kuber-lab01:~$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+$ * From minikube (minikube ssh)
+$ curl 172.17.0.4
+web-5584c6c5c6-flgfw
+$ curl 172.17.0.5
+web-5584c6c5c6-h68pp
+$ curl 172.17.0.6
+web-5584c6c5c6-w2l5l
+```
 * From another pod (kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash)
+```bash
+
+```
+
 ### Create service (ClusterIP)
 The command that can be used to create a manifest template
 ```bash
