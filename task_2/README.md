@@ -238,6 +238,12 @@ web-5584c6c5c6-flgfw
 ```bash
 kubectl apply -f service-headless.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f service-headless.yaml
+service/web-headless created
+
+```
+
 ### DNS
 Connect to any pod
 ```bash
