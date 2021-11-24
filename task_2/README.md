@@ -207,8 +207,18 @@ web-5584c6c5c6-w2l5l
 kubectl apply -f service-nodeport.yaml
 kubectl get service
 ```
-### Sample output
+### my output
 ```bash
+
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f service-nodeport.yaml
+service/web-np created
+rinx@kuber-lab01:~/education/task_2$ kubectl get service
+NAME         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+kubernetes   ClusterIP   10.96.0.1       <none>        443/TCP        2d1h
+web          ClusterIP   10.105.7.232    <none>        80/TCP         123m
+web-np       NodePort    10.102.230.48   <none>        80:31661/TCP   3s
+
+
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP        20h
 web          ClusterIP   10.100.170.236   <none>        80/TCP         15m
@@ -219,6 +229,16 @@ Note how port is specified for a NodePort service
 ```bash
 minikube ip
 curl <minikube_ip>:<nodeport_port>
+```
+```bash
+rinx@kuber-lab01:~/education/task_2$ minikube ip
+192.168.59.101
+rinx@kuber-lab01:~/education/task_2$ curl 192.168.59.101:31661
+web-5584c6c5c6-h68pp
+rinx@kuber-lab01:~/education/task_2$ curl 192.168.59.101:31661
+web-5584c6c5c6-w2l5l
+rinx@kuber-lab01:~/education/task_2$ curl 192.168.59.101:31661
+web-5584c6c5c6-flgfw
 ```
 ### Headless service
 ```bash
