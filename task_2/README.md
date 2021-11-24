@@ -154,18 +154,54 @@ NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP   47h
 web          ClusterIP   10.105.7.232   <none>        80/TCP    17s
 ```
-  
-### Sample output
-```bash
-NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP   20h
-web          ClusterIP   10.100.170.236   <none>        80/TCP    28s
-```
-* Try connect to service (curl service_ip_address). What happens?
+ 
 
+* Try connect to service (curl service_ip_address). What happens?
+```bash
+rinx@kuber-lab01:~/education/task_2$ curl 10.105.7.232
+^C
+```
 * From you PC
 * From minikube (minikube ssh) (run the command several times)
+```bash
+rinx@kuber-lab01:~/education/task_2$ minikube ssh
+                         _             _
+            _         _ ( )           ( )
+  ___ ___  (_)  ___  (_)| |/')  _   _ | |_      __
+/' _ ` _ `\| |/' _ `\| || , <  ( ) ( )| '_`\  /'__`\
+| ( ) ( ) || || ( ) || || |\`\ | (_) || |_) )(  ___/
+(_) (_) (_)(_)(_) (_)(_)(_) (_)`\___/'(_,__/'`\____)
+
+
+$ curl 10.105.7.232
+web-5584c6c5c6-w2l5l
+$ curl 10.105.7.232
+web-5584c6c5c6-flgfw
+$ curl 10.105.7.232
+web-5584c6c5c6-h68pp
+$ curl 10.105.7.232
+web-5584c6c5c6-w2l5l
+
+```
+
 * From another pod (kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash) (run the command several times)
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -it $(kubectl get pod |awk '{print $1}'|grep web-|head -n1) bash
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-h68pp
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-h68pp
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-w2l5l
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-h68pp
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-h68pp
+root@web-5584c6c5c6-flgfw:/# curl 10.105.7.232
+web-5584c6c5c6-w2l5l
+```
+
+
 ### NodePort
 ```bash
 kubectl apply -f service-nodeport.yaml
