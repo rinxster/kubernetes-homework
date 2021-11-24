@@ -4,32 +4,50 @@
 ```bash
 kubectl apply -f pv.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f pv.yaml
+persistentvolume/minio-deployment-pv created
+```
+
 ### Check our pv
 ```bash
 kubectl get pv
 ```
-### Sample output
+### my output
 ```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pv
 NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
-minio-deployment-pv   5Gi        RWO            Retain           Available                                   5s
+minio-deployment-pv   5Gi        RWO            Retain           Available    
 ```
 ### Create pvc
 ```bash
 kubectl apply -f pvc.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f pvc.yaml
+persistentvolumeclaim/minio-deployment-claim created
+```
 ### Check our output in pv 
 ```bash
 kubectl get pv
-NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                            STORAGECLASS   REASON   AGE
-minio-deployment-pv   5Gi        RWO            Retain           Bound    default/minio-deployment-claim                           94s
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pv
+NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                            STORAGECLASS   REASON   AGE
+minio-deployment-pv   5Gi        RWO            Retain           Bound    default/minio-deployment-claim                           2m41s
+```
+
 Output is change. PV get status bound.
 ### Check pvc
 ```bash
 kubectl get pvc
-NAME                     STATUS   VOLUME                CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-minio-deployment-claim   Bound    minio-deployment-pv   5Gi        RWO                           79s
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pvc
+NAME                     STATUS   VOLUME                CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+minio-deployment-claim   Bound    minio-deployment-pv   5Gi        RWO                           106s
+```
+
 ### Apply deployment minio
 ```bash
 kubectl apply -f deployment.yaml
