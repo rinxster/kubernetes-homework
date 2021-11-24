@@ -72,10 +72,27 @@ Open minikup_ip:node_port in you browser
 ```bash
 kubectl apply -f statefulset.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f statefulset.yaml
+statefulset.apps/minio-state created
+service/minio-state created
+
+```
+
+
 ### Check pod and statefulset
 ```bash
 kubectl get pod
 kubectl get sts
+```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+minio-575d987896-grb2d   1/1     Running   0          155m
+minio-state-0            1/1     Running   0          37s
+rinx@kuber-lab01:~/education/task_3$ kubectl get sts
+NAME          READY   AGE
+minio-state   1/1     40s
 ```
 
 ### Homework
