@@ -54,6 +54,12 @@ root@nginx:/#
 kubectl apply -f nginx-configmap.yaml
 kubectl apply -f deployment.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f nginx-configmap.yaml
+configmap/nginx-configmap created
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f deployment.yaml
+deployment.apps/web created
+```
 ### Get pod ip address
 ```bash
 kubectl get pods -o wide
