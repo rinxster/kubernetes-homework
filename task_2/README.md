@@ -279,7 +279,7 @@ ingress-nginx-admission-patch--1-fnvx4      0/1     Completed   0              1
 ingress-nginx-controller-5f66978484-m6zqj   1/1     Running     2 (3h6m ago)   17h
 ```
 
-**$kubectl get pod $(kubectl get pod -n ingress-nginx|grep ingress-nginx-controller|awk '{print $1}') -n ingress-nginx -o yaml*
+**$kubectl get pod $(kubectl get pod -n ingress-nginx|grep ingress-nginx-controller|awk '{print $1}') -n ingress-nginx -o yaml**
 
 ```
 apiVersion: v1
