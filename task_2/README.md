@@ -18,23 +18,23 @@ pod/nginx created
 ```
 
 ## Check env in pod
-```bash
-kubectl exec -it nginx -- bash
-printenv
+
+**kubectl exec -it nginx -- bash
+**printenv
 ```
-### Sample output (find our env)
 ```bash
-Unable to use a TTY - input is not a terminal or the right kind of file
-printenv
+rinx@kuber-lab01:~/education/task_2$ kubectl exec -it nginx -- bash
+printenvroot@nginx:/# printenv
 KUBERNETES_SERVICE_PORT_HTTPS=443
 KUBERNETES_SERVICE_PORT=443
 DATABASE_URL=postgres://connect
 HOSTNAME=nginx
 PWD=/
-PKG_RELEASE=1~buster
+PKG_RELEASE=1~bullseye
 HOME=/root
 KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
-NJS_VERSION=0.6.2
+NJS_VERSION=0.7.0
+TERM=xterm
 SHLVL=1
 KUBERNETES_PORT_443_TCP_PROTO=tcp
 KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
@@ -44,9 +44,11 @@ KUBERNETES_PORT=tcp://10.96.0.1:443
 KUBERNETES_PORT_443_TCP_PORT=443
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 firstname=firstname
-NGINX_VERSION=1.21.3
+NGINX_VERSION=1.21.4
 _=/usr/bin/printenv
+root@nginx:/#
 ```
+
 ### Create deployment with simple application
 ```bash
 kubectl apply -f nginx-configmap.yaml
