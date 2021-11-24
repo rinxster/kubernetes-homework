@@ -70,7 +70,7 @@ Open minikup_ip:node_port in you browser
 
 *http://192.168.59.101:30008/login*
 
-![Screenshot](https://user-images.githubusercontent.com/3485151/143292450-099621d4-2654-4949-9245-ee342036a325.png)
+![Screenshot](https://user-images.githubusercontent.com/3485151/143292647-2d6e33a9-4f50-4294-87db-97afad2567e4.png)
 
 ### Apply statefulset
 ```bash
