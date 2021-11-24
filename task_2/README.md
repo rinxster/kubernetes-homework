@@ -114,14 +114,47 @@ The command that can be used to create a manifest template
 ```bash
 kubectl expose deployment/web --type=ClusterIP --dry-run=client -o yaml > service_template.yaml
 ```
+```
+rinx@kuber-lab01:~/education/task_2$ cat service_template.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web
+  name: web
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: web
+  type: ClusterIP
+status:
+  loadBalancer: {}
+
+```
+
 Apply manifest
 ```bash
 kubectl apply -f service_template.yaml
+```
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl apply -f service_template.yaml
+service/web created
 ```
 Get service CLUSTER-IP
 ```bash
 kubectl get svc
 ```
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl get svc
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP   47h
+web          ClusterIP   10.105.7.232   <none>        80/TCP    17s
+```
+  
 ### Sample output
 ```bash
 NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
