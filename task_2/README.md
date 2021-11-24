@@ -63,10 +63,6 @@ deployment.apps/web created
 ### Get pod ip address
 ```bash
 kubectl get pods -o wide
-NAME                   READY   STATUS    RESTARTS   AGE     IP           NODE       NOMINATED NODE   READINESS GATES
-web-5584c6c5c6-6wmdx   1/1     Running   0          4m47s   172.17.0.11   minikube   <none>           <none>
-web-5584c6c5c6-l4drg   1/1     Running   0          4m47s   172.17.0.10   minikube   <none>           <none>
-web-5584c6c5c6-xn466   1/1     Running   0          4m47s   172.17.0.9    minikube   <none>           <none>
 ```
 ```bash
 rinx@kuber-lab01:~/education/task_2$ kubectl get pods -o wide
