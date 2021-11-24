@@ -18,10 +18,10 @@ pod/nginx created
 ```
 
 ## Check env in pod
-
+```bash
 $kubectl exec -it nginx -- bash
 $printenv
-
+```
 ```bash
 rinx@kuber-lab01:~/education/task_2$ kubectl exec -it nginx -- bash
 printenvroot@nginx:/# printenv
