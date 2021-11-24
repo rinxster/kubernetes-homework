@@ -68,6 +68,14 @@ web-5584c6c5c6-6wmdx   1/1     Running   0          4m47s   172.17.0.11   miniku
 web-5584c6c5c6-l4drg   1/1     Running   0          4m47s   172.17.0.10   minikube   <none>           <none>
 web-5584c6c5c6-xn466   1/1     Running   0          4m47s   172.17.0.9    minikube   <none>           <none>
 ```
+```bash
+rinx@kuber-lab01:~/education/task_2$ kubectl get pods -o wide
+NAME                   READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+nginx                  1/1     Running   0          12m   172.17.0.3   minikube   <none>           <none>
+web-5584c6c5c6-flgfw   1/1     Running   0          76s   172.17.0.4   minikube   <none>           <none>
+web-5584c6c5c6-h68pp   1/1     Running   0          76s   172.17.0.5   minikube   <none>           <none>
+web-5584c6c5c6-w2l5l   1/1     Running   0          76s   172.17.0.6   minikube   <none>           <none>
+```
 * Try connect to pod with curl (curl pod_ip_address). What happens?
 * From you PC
 * From minikube (minikube ssh)
