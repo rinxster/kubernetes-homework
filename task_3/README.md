@@ -52,11 +52,22 @@ minio-deployment-claim   Bound    minio-deployment-pv   5Gi        RWO          
 ```bash
 kubectl apply -f deployment.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f deployment.yaml
+deployment.apps/minio created
+```
+
 ### Apply svc nodeport
 ```bash
 kubectl apply -f minio-nodeport.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f minio-nodeport.yaml
+service/minio-app created
+
+```
 Open minikup_ip:node_port in you browser
+
 ### Apply statefulset
 ```bash
 kubectl apply -f statefulset.yaml
