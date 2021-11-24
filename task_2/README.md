@@ -74,11 +74,11 @@ web-5584c6c5c6-w2l5l   1/1     Running   0          76s   172.17.0.6   minikube 
 ```
 * Try connect to pod with curl (curl pod_ip_address). What happens?
 ```bash
-rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.4
+$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.4
 curl: (7) Failed to connect to 172.17.0.4 port 80: No route to host
-rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.5
+$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.5
 curl: (7) Failed to connect to 172.17.0.5 port 80: No route to host
-rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.6
+$rinx@kuber-lab01:~/education/task_2$ curl 172.17.0.6
 curl: (7) Failed to connect to 172.17.0.6 port 80: No route to host
 ```
 * From you PC
