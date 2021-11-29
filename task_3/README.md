@@ -179,8 +179,11 @@ spec:
 ![Screenshot](https://user-images.githubusercontent.com/3485151/143870118-15401794-a9b5-4ed7-9585-04c1f9db97e7.png)
 
 * Create deploy with emptyDir save data to mountPoint emptyDir, delete pods, check data.
+
+[hw-task3-3-emptyDir.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_3/hw-task3-3-emptyDir.yaml)
+
 ```bash
-rinx@kuber-lab01:~/education/task_3$ kubectl apply -f task3-3.yaml
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f hw-task3-3-emptyDir.yaml
 deployment.apps/web created
 rinx@kuber-lab01:~/education/task_3$ k get pods
 NAME                     READY   STATUS    RESTARTS   AGE
