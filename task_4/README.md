@@ -93,6 +93,52 @@ contexts:
 rinx@kuber-lab01:~/education/task_4$ ls
 README.md  binding.yaml  k8s_user.crt  k8s_user.csr  k8s_user.key
 ```
+*more ~/.kube/config
+
+```
+rinx@kuber-lab01:~/education/task_4$ more ~/.kube/config
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority: /home/rinx/.minikube/ca.crt
+    extensions:
+    - extension:
+        last-update: Mon, 29 Nov 2021 07:19:42 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.24.0
+      name: cluster_info
+    server: https://192.168.49.2:8443
+  name: minikube
+contexts:
+- context:
+    cluster: minikube
+    user: k8s_user
+  name: k8s_user
+- context:
+    cluster: minikube
+    extensions:
+    - extension:
+        last-update: Mon, 29 Nov 2021 07:19:42 UTC
+        provider: minikube.sigs.k8s.io
+        version: v1.24.0
+      name: context_info
+    namespace: default
+    user: minikube
+  name: minikube
+current-context: minikube
+kind: Config
+preferences: {}
+users:
+- name: k8s_user
+  user:
+    client-certificate: /home/rinx/education/task_4/k8s_user.crt
+    client-key: /home/rinx/education/task_4/k8s_user.key
+- name: minikube
+  user:
+    client-certificate: /home/rinx/.minikube/profiles/minikube/client.crt
+    client-key: /home/rinx/.minikube/profiles/minikube/client.key
+
+```
 
 ### Switch to use new context
 ```bash
