@@ -173,10 +173,6 @@ spec:
                 number: 80
                 
 ```
-```bash
-rinx@kuber-lab01:~/education/task_3$ k apply -f ingress.yaml
-ingress.networking.k8s.io/ingress-web created
-```
 
 ![Screenshot](https://user-images.githubusercontent.com/3485151/143870086-2c9e7b50-a4cd-4f86-8f12-4e0ac86596c3.png)
 
