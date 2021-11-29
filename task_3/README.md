@@ -4,49 +4,99 @@
 ```bash
 kubectl apply -f pv.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f pv.yaml
+persistentvolume/minio-deployment-pv created
+```
+
 ### Check our pv
 ```bash
 kubectl get pv
 ```
-### Sample output
+### my output
 ```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pv
 NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
-minio-deployment-pv   5Gi        RWO            Retain           Available                                   5s
+minio-deployment-pv   5Gi        RWO            Retain           Available    
 ```
 ### Create pvc
 ```bash
 kubectl apply -f pvc.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f pvc.yaml
+persistentvolumeclaim/minio-deployment-claim created
+```
 ### Check our output in pv 
 ```bash
 kubectl get pv
-NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                            STORAGECLASS   REASON   AGE
-minio-deployment-pv   5Gi        RWO            Retain           Bound    default/minio-deployment-claim                           94s
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pv
+NAME                  CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                            STORAGECLASS   REASON   AGE
+minio-deployment-pv   5Gi        RWO            Retain           Bound    default/minio-deployment-claim                           2m41s
+```
+
 Output is change. PV get status bound.
 ### Check pvc
 ```bash
 kubectl get pvc
-NAME                     STATUS   VOLUME                CAPACITY   ACCESS MODES   STORAGECLASS   AGE
-minio-deployment-claim   Bound    minio-deployment-pv   5Gi        RWO                           79s
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pvc
+NAME                     STATUS   VOLUME                CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+minio-deployment-claim   Bound    minio-deployment-pv   5Gi        RWO                           106s
+```
+
 ### Apply deployment minio
 ```bash
 kubectl apply -f deployment.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f deployment.yaml
+deployment.apps/minio created
+```
+
 ### Apply svc nodeport
 ```bash
 kubectl apply -f minio-nodeport.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f minio-nodeport.yaml
+service/minio-app created
+
+```
 Open minikup_ip:node_port in you browser
+
+*http://192.168.59.101:30008/login*
+
+![Screenshot](https://user-images.githubusercontent.com/3485151/143292647-2d6e33a9-4f50-4294-87db-97afad2567e4.png)
+
 ### Apply statefulset
 ```bash
 kubectl apply -f statefulset.yaml
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f statefulset.yaml
+statefulset.apps/minio-state created
+service/minio-state created
+
+```
+
+
 ### Check pod and statefulset
 ```bash
 kubectl get pod
 kubectl get sts
+```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl get pod
+NAME                     READY   STATUS    RESTARTS   AGE
+minio-575d987896-grb2d   1/1     Running   0          155m
+minio-state-0            1/1     Running   0          37s
+rinx@kuber-lab01:~/education/task_3$ kubectl get sts
+NAME          READY   AGE
+minio-state   1/1     40s
 ```
 
 ### Homework
