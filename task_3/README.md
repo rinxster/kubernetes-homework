@@ -215,8 +215,8 @@ bin  boot  dev  docker-entrypoint.d  docker-entrypoint.sh  empty  etc  home  lib
 root@web-7b84565f5d-z44x5:/# cd empty/
 root@web-7b84565f5d-z44x5:/empty# ls
 root@web-7b84565f5d-z44x5:/empty#
-
 ```
+### Conclusion: as you can see "testfile.txt" file disappeared in "/empty" folder once pod is deleted and recreated 
 
 * Optional. Raise an nfs share on a remote machine. Create a pv using this share, create a pvc for it, create a deployment. Save data to the share, delete the deployment, delete the pv/pvc, check that the data is safe.
   ``` skipped since optional```
