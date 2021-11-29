@@ -166,6 +166,9 @@ spec:
              port:
                 number: 80
 ```
+![Screenshot](https://user-images.githubusercontent.com/3485151/143870086-2c9e7b50-a4cd-4f86-8f12-4e0ac86596c3.png)
+
+![Screenshot](https://user-images.githubusercontent.com/3485151/143870118-15401794-a9b5-4ed7-9585-04c1f9db97e7.png)
 
 * Create deploy with emptyDir save data to mountPoint emptyDir, delete pods, check data.
 ```
