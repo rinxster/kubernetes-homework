@@ -179,7 +179,40 @@ spec:
 ![Screenshot](https://user-images.githubusercontent.com/3485151/143870118-15401794-a9b5-4ed7-9585-04c1f9db97e7.png)
 
 * Create deploy with emptyDir save data to mountPoint emptyDir, delete pods, check data.
-```
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl apply -f task3-3.yaml
+deployment.apps/web created
+rinx@kuber-lab01:~/education/task_3$ k get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+web-7b84565f5d-cmmbw     1/1     Running   0          7s
+rinx@kuber-lab01:~/education/task_3$ kubectl exec -it web-7b84565f5d-cmmbw  bash
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+root@web-7b84565f5d-cmmbw:/# ls
+bin  boot  dev  docker-entrypoint.d  docker-entrypoint.sh  empty  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@web-7b84565f5d-cmmbw:/# cd /empty/
+root@web-7b84565f5d-cmmbw:/empty# echo testtext > testfile.txt
+root@web-7b84565f5d-cmmbw:/empty# ls
+testfile.txt
+root@web-7b84565f5d-cmmbw:/empty# more testfile.txt
+testtext
+root@web-7b84565f5d-cmmbw:/empty# exit
+exit
+rinx@kuber-lab01:~/education/task_3$ k get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+web-7b84565f5d-cmmbw     1/1     Running   0          2m1s
+rinx@kuber-lab01:~/education/task_3$ k delete pods web-7b84565f5d-cmmbw
+pod "web-7b84565f5d-cmmbw" deleted
+rinx@kuber-lab01:~/education/task_3$ k get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+web-7b84565f5d-z44x5     1/1     Running   0          3s
+rinx@kuber-lab01:~/education/task_3$ kubectl exec -it web-7b84565f5d-z44x5 bash
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+root@web-7b84565f5d-z44x5:/# ls
+bin  boot  dev  docker-entrypoint.d  docker-entrypoint.sh  empty  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@web-7b84565f5d-z44x5:/# cd empty/
+root@web-7b84565f5d-z44x5:/empty# ls
+root@web-7b84565f5d-z44x5:/empty#
+
 ```
 
 * Optional. Raise an nfs share on a remote machine. Create a pv using this share, create a pvc for it, create a deployment. Save data to the share, delete the deployment, delete the pv/pvc, check that the data is safe.
