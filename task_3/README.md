@@ -101,6 +101,8 @@ minio-state   1/1     40s
 
 ### Homework
 * We published minio "outside" using nodePort. Do the same but using ingress.
+[a link](https://github.com/rinxster/kubernetes-homework/blob/main/task_3/hw-task3-1-ingress-minio.yaml)
+
 ```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -136,6 +138,8 @@ minio-state   ClusterIP   None             <none>        9000/TCP         5h6m
 my-nginx      ClusterIP   10.101.71.163    <none>        80/TCP           4s
 ```
 ingress.yaml file
+
+[a link] https://github.com/rinxster/kubernetes-homework/blob/main/task_3/hw-task3-2-ingress-minio-nginx.yaml
 
 
 ```
