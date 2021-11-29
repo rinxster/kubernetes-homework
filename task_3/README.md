@@ -101,6 +101,75 @@ minio-state   1/1     40s
 
 ### Homework
 * We published minio "outside" using nodePort. Do the same but using ingress.
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-web
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+             name: minio-app
+             port:
+                number: 9001
+```
 * Publish minio via ingress so that minio by ip_minikube and nginx returning hostname (previous job) by path ip_minikube/web are available at the same time.
+```bash
+rinx@kuber-lab01:~/education/task_3$ kubectl create deployment --image nginx my-nginx
+deployment.apps/my-nginx created
+rinx@kuber-lab01:~/education/task_3$ kubectl expose deployment my-nginx --port=80 --type=ClusterIP
+service/my-nginx exposed
+rinx@kuber-lab01:~/education/task_3$ k get svc
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+kubernetes    ClusterIP   10.96.0.1        <none>        443/TCP          2d19h
+minio-app     NodePort    10.108.141.170   <none>        9001:30008/TCP   5h7m
+minio-state   ClusterIP   None             <none>        9000/TCP         5h6m
+my-nginx      ClusterIP   10.101.71.163    <none>        80/TCP           4s
+```
+ingress.yaml file
+```
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-web
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+             name: minio-app
+             port:
+                number: 9001
+  - http:
+      paths:
+      - path: /web/
+        pathType: Prefix
+        backend:
+          service:
+             name: my-nginx
+             port:
+                number: 80
+```
+
 * Create deploy with emptyDir save data to mountPoint emptyDir, delete pods, check data.
+```
+```
+
 * Optional. Raise an nfs share on a remote machine. Create a pv using this share, create a pvc for it, create a deployment. Save data to the share, delete the deployment, delete the pv/pvc, check that the data is safe.
+  ``` skipped since optional```
