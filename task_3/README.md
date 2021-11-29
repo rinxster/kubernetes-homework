@@ -136,6 +136,8 @@ minio-state   ClusterIP   None             <none>        9000/TCP         5h6m
 my-nginx      ClusterIP   10.101.71.163    <none>        80/TCP           4s
 ```
 ingress.yaml file
+
+
 ```
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -165,7 +167,13 @@ spec:
              name: my-nginx
              port:
                 number: 80
+                
 ```
+```bash
+rinx@kuber-lab01:~/education/task_3$ k apply -f ingress.yaml
+ingress.networking.k8s.io/ingress-web created
+```
+
 ![Screenshot](https://user-images.githubusercontent.com/3485151/143870086-2c9e7b50-a4cd-4f86-8f12-4e0ac86596c3.png)
 
 ![Screenshot](https://user-images.githubusercontent.com/3485151/143870118-15401794-a9b5-4ed7-9585-04c1f9db97e7.png)
