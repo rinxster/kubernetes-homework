@@ -276,3 +276,16 @@ deployment.apps/my-nginx created
 ***Conclusion: as you can see prod_view can not create pods and prod_admin can create pods in pord namespace.
 
 * Create a serviceAccount sa-namespace-admin. Grant full rights to namespace default. Create context, authorize using the created sa, check accesses.
+
+Created [hw-task4-3-serviceAccount.yaml] file(https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-3-serviceAccount.yaml)
+```bash
+rinx@kuber-lab01:~/education/task_4$ kubectl create sa sa-namespace-admin
+serviceaccount/sa-namespace-admin created
+rinx@kuber-lab01:~/education/task_4$ kubectl apply -f hw-task4-3-serviceAccount.yaml
+serviceaccount/sa-namespace-admin configured
+rolebinding.rbac.authorization.k8s.io/sa-namespace-admin created
+rinx@kuber-lab01:~/education/task_4$ kubectl auth can-i get pods --as=system:serviceaccount:default:sa-namespace-admin
+yes
+rinx@kuber-lab01:~/education/task_4$ kubectl auth can-i get pods --as=system:serviceaccount:prod:sa-namespace-admin
+no
+```
