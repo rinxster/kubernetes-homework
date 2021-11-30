@@ -255,7 +255,7 @@ kube-system            Active   3d12h
 kubernetes-dashboard   Active   3d11h
 prod                   Active   2s
 ```
-Created [hw-task4-2-prod_admin-prod_view.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-2-prod_admin-prod_view.yaml) file and tested new accounts rights
+Prepared file [hw-task4-2-prod_admin-prod_view.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-2-prod_admin-prod_view.yaml)
 ```bash
 rinx@kuber-lab01:~/education/task_4$ k apply -f hw-task4-2-prod_admin-prod_view.yaml
 rolebinding.rbac.authorization.k8s.io/prod_view created
@@ -277,7 +277,7 @@ deployment.apps/my-nginx created
 
 * Create a serviceAccount sa-namespace-admin. Grant full rights to namespace default. Create context, authorize using the created sa, check accesses.
 
-Created [hw-task4-3-serviceAccount.yaml] file(https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-3-serviceAccount.yaml)
+Prepared file [hw-task4-3-serviceAccount.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-3-serviceAccount.yaml)
 ```bash
 rinx@kuber-lab01:~/education/task_4$ kubectl create sa sa-namespace-admin
 serviceaccount/sa-namespace-admin created
