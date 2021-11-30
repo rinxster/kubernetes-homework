@@ -238,6 +238,7 @@ Switched to context "deploy_edit".
 rinx@kuber-lab01:~/education/task_4$ k delete pod web-7b84565f5d-z44x5
 pod "web-7b84565f5d-z44x5" deleted
 ```
+***Conclusion: as you can see deploy_view can not delete pods and deploy_edit can delete pods.
 
 * Create namespace prod. Create users prod_admin, prod_view. Give the user prod_admin admin rights on ns prod, give the user prod_view only view rights on namespace prod.
 ```bash
@@ -253,6 +254,25 @@ kube-public            Active   3d12h
 kube-system            Active   3d12h
 kubernetes-dashboard   Active   3d11h
 prod                   Active   2s
-
 ```
+Created [hw-task4-2-prod_admin-prod_view.yaml]() file and tested new accounts rights
+```bash
+rinx@kuber-lab01:~/education/task_4$ k apply -f hw-task4-2-prod_admin-prod_view.yaml
+rolebinding.rbac.authorization.k8s.io/prod_view created
+rolebinding.rbac.authorization.k8s.io/prod_admin created
+rinx@kuber-lab01:~/education/task_4$ kubectl config use-context prod_view
+Switched to context "prod_view".
+rinx@kuber-lab01:~/education/task_4$ kubectl config set-context --current --namespace=prod
+Context "prod_view" modified.
+rinx@kuber-lab01:~/education/task_4$ kubectl create deployment --image nginx my-nginx
+error: failed to create deployment: deployments.apps is forbidden: User "prod_view" cannot create resource "deployments" in API group "apps" in the namespace "prod"
+rinx@kuber-lab01:~/education/task_4$ kubectl config use-context prod_admin
+Switched to context "prod_admin".
+rinx@kuber-lab01:~/education/task_4$ kubectl config set-context --current --namespace=prod
+Context "prod_admin" modified.
+rinx@kuber-lab01:~/education/task_4$ kubectl create deployment --image nginx my-nginx
+deployment.apps/my-nginx created
+```
+***Conclusion: as you can see prod_view can not create pods and prod_admin can create pods in pord namespace.
+
 * Create a serviceAccount sa-namespace-admin. Grant full rights to namespace default. Create context, authorize using the created sa, check accesses.
