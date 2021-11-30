@@ -255,7 +255,7 @@ kube-system            Active   3d12h
 kubernetes-dashboard   Active   3d11h
 prod                   Active   2s
 ```
-Created [hw-task4-2-prod_admin-prod_view.yaml]() file and tested new accounts rights
+Created [hw-task4-2-prod_admin-prod_view.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-2-prod_admin-prod_view.yaml) file and tested new accounts rights
 ```bash
 rinx@kuber-lab01:~/education/task_4$ k apply -f hw-task4-2-prod_admin-prod_view.yaml
 rolebinding.rbac.authorization.k8s.io/prod_view created
