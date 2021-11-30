@@ -185,6 +185,9 @@ kubectl get pod
 ```
 Now we can see pods
 ```bash
+rinx@kuber-lab01:~$ kubectl config use-context k8s_user
+Switched to context "k8s_user".
+
 rinx@kuber-lab01:~/education/task_4$ kubectl get pod
 NAME                     READY   STATUS    RESTARTS   AGE
 minio-575d987896-97mps   1/1     Running   0          7h20m
