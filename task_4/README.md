@@ -256,6 +256,21 @@ kubernetes-dashboard   Active   3d11h
 prod                   Active   2s
 ```
 Prepared file [hw-task4-2-prod_admin-prod_view.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/hw-task4-2-prod_admin-prod_view.yaml)
+```
+#--prod_admin
+openssl genrsa -out prod_admin.key 2048
+openssl req -new -key prod_admin.key -out prod_admin.csr -subj "/CN=prod_admin"
+openssl x509 -req -in prod_admin.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out prod_admin.crt -days 500
+kubectl config set-credentials prod_admin --client-certificate=prod_admin.crt --client-key=prod_admin.key
+kubectl config set-context prod_admin --cluster=minikube --user=prod_admin
+#--prod_view
+openssl genrsa -out prod_view.key 2048
+openssl req -new -key prod_view.key -out prod_view.csr -subj "/CN=prod_view"
+openssl x509 -req -in prod_view.csr -CA ~/.minikube/ca.crt -CAkey ~/.minikube/ca.key -CAcreateserial -out prod_view.crt -days 500
+kubectl config set-credentials prod_view --client-certificate=prod_view.crt --client-key=prod_view.key
+kubectl config set-context prod_view --cluster=minikube --user=prod_view
+```
+
 ```bash
 rinx@kuber-lab01:~/education/task_4$ k apply -f hw-task4-2-prod_admin-prod_view.yaml
 rolebinding.rbac.authorization.k8s.io/prod_view created
