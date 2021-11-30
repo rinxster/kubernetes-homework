@@ -240,4 +240,19 @@ pod "web-7b84565f5d-z44x5" deleted
 ```
 
 * Create namespace prod. Create users prod_admin, prod_view. Give the user prod_admin admin rights on ns prod, give the user prod_view only view rights on namespace prod.
+```bash
+
+rinx@kuber-lab01:~/education/task_4$ kubectl create namespace prod
+namespace/prod created
+rinx@kuber-lab01:~/education/task_4$ kubectl get namespaces
+NAME                   STATUS   AGE
+default                Active   3d12h
+ingress-nginx          Active   20h
+kube-node-lease        Active   3d12h
+kube-public            Active   3d12h
+kube-system            Active   3d12h
+kubernetes-dashboard   Active   3d11h
+prod                   Active   2s
+
+```
 * Create a serviceAccount sa-namespace-admin. Grant full rights to namespace default. Create context, authorize using the created sa, check accesses.
