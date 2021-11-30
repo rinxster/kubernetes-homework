@@ -214,6 +214,7 @@ kubectl config set-credentials deploy_edit --client-certificate=deploy_edit.crt 
 kubectl config set-context deploy_edit --cluster=minikube --user=deploy_edit
 
 ```
+Prepared file [task4-1-deploy_view-deploy_edit.yaml](https://github.com/rinxster/kubernetes-homework/blob/main/task_4/task4-1-deploy_view-deploy_edit.yaml)
 
 ```bash
 rinx@kuber-lab01:~/education/task_4$ k apply -f task4-1-deploy_view-deploy_edit.yaml
