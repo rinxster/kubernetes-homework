@@ -214,5 +214,29 @@ kubectl config set-credentials deploy_edit --client-certificate=deploy_edit.crt 
 kubectl config set-context deploy_edit --cluster=minikube --user=deploy_edit
 
 ```
+
+```bash
+rinx@kuber-lab01:~/education/task_4$ k apply -f task4-1-deploy_view-deploy_edit.yaml
+clusterrole.rbac.authorization.k8s.io/deploy_view created
+clusterrolebinding.rbac.authorization.k8s.io/deploy_view created
+clusterrole.rbac.authorization.k8s.io/deploy_edit created
+clusterrolebinding.rbac.authorization.k8s.io/deploy_edit created
+
+rinx@kuber-lab01:~/education/task_4$ kubectl config use-context deploy_view
+Switched to context "deploy_view".
+rinx@kuber-lab01:~/education/task_4$ k get pods
+NAME                     READY   STATUS    RESTARTS   AGE
+minio-575d987896-97mps   1/1     Running   0          21h
+minio-state-0            1/1     Running   0          21h
+web-7b84565f5d-z44x5     1/1     Running   0          15h
+rinx@kuber-lab01:~/education/task_4$ k delete pod web-7b84565f5d-z44x5
+Error from server (Forbidden): pods "web-7b84565f5d-z44x5" is forbidden: User "deploy_view" cannot delete resource "pods" in API group "" in the namespace "default"
+
+rinx@kuber-lab01:~/education/task_4$ kubectl config use-context deploy_edit
+Switched to context "deploy_edit".
+rinx@kuber-lab01:~/education/task_4$ k delete pod web-7b84565f5d-z44x5
+pod "web-7b84565f5d-z44x5" deleted
+```
+
 * Create namespace prod. Create users prod_admin, prod_view. Give the user prod_admin admin rights on ns prod, give the user prod_view only view rights on namespace prod.
 * Create a serviceAccount sa-namespace-admin. Grant full rights to namespace default. Create context, authorize using the created sa, check accesses.
